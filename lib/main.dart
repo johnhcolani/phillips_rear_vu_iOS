@@ -6,7 +6,10 @@ import 'package:phillips_rear_vu/screens/my_app.dart';
 import 'package:phillips_rear_vu/screens/scanner_page.dart';
 import 'package:phillips_rear_vu/screens/splash_screen.dart';
 
+
 Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,

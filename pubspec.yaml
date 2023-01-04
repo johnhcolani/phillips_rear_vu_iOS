@@ -44,6 +44,7 @@ dependencies:
   permission_handler: ^10.2.0
   sensors_plus: ^2.0.1
   google_fonts: ^3.0.1
+  native_notify: ^0.0.16
 
 dev_dependencies:
   flutter_test:

@@ -15,20 +15,18 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 # philips_project
+#This App is demo app for ESP32-s Camera that everybody can find at the market
+# After uploading the data to the camera by Arduino IDE you can Access to IP Address
 
 Scan QR code for ssid, password and url.
 
 # link to QR code generator:
+# After that needs to add json text to QR code generator
 
 - https://www.the-qrcode-generator.com/
 
 # Sample text for json
 
-{
-"ssid": "Name of network",
-"password": "Password of network",
-"url": {"IP address url for camera}:81/stream"
-}
 
 {
 "ssid": "ESP32_X",
