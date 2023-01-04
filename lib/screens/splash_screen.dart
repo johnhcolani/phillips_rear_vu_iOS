@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:phillips_rear_vu/utils/app_background.dart';
+import 'my_app.dart';
 
-import 'my_app.dart';
-import 'my_app.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -12,7 +11,9 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
+  late AnimationController oneSecondController;
+  late Animation<Offset> movingLogoAnimation;
   Timer? _timer;
   _startDelay(){
     _timer=Timer(const Duration(seconds: 2),_goNext);
@@ -24,12 +25,21 @@ class _SplashScreenState extends State<SplashScreen> {
   }
   @override
   void initState() {
+    oneSecondController = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    movingLogoAnimation = Tween(begin: const Offset(0, 0.05), end: const Offset(0, 0.3)).animate(
+        oneSecondController.drive(CurveTween(curve: Curves.elasticIn)));
+
     super.initState();
     _startDelay();
   }
   @override
   void dispose() {
     _timer?.cancel();
+    oneSecondController.dispose();
     super.dispose();
 
   }
@@ -40,41 +50,43 @@ class _SplashScreenState extends State<SplashScreen> {
     double wi = MediaQuery.of(context).size.width;
     return  Scaffold(
 
-        body: Center(
-          child:  Stack(
-              children: <Widget>[
-                const AppBackground(),
+        body: Stack(
+            children: <Widget>[
+              const AppBackground(),
 
-
-
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset("assets/images/phillips_logo.png",scale: 1.2,),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Container(
-                        width: wi*0.29,
-                        height: wi*0.29,
-                        decoration: BoxDecoration(
-                            border: Border.all(width: 2,
-                              color: Colors.white,
-                            ),
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(25)
+              Center(
+                child: SlideTransition(
+                  position: movingLogoAnimation,
+                  child: Padding(
+                    padding:  EdgeInsets.only(top: he * 0.4),
+                    child: Center(
+                      child: Column(
+                      children: [
+                        Image.asset("assets/images/phillips_logo.png",scale: 1.2,),
+                         SizedBox(
+                          height: he*0.06,
                         ),
-                        child: Image.asset("assets/images/splash_screen_camera.png",scale: 1.5,),
-                      )
-                    ],
-                  ),
-                )
+                        Container(
+                          width: wi*0.29,
+                          height: wi*0.29,
+                          decoration: BoxDecoration(
+                              border: Border.all(width: 2,
+                                color: Colors.white,
+                              ),
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(25)
+                          ),
+                          child: Image.asset("assets/images/splash_screen_camera.png",scale: 1.5,),
+                        )
+                      ],
+                      ),
+                    ),
+                  ),),
+              ),
 
-              ]),
 
-        ));
+
+            ]));
   }
   }
 

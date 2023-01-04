@@ -25,13 +25,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-    <string>To capture profile photo please grant camera access</string>
-    <key>com.apple.developer.networking.wifi-info</key>
-    <true/>
-    <key>com.apple.developer.networking.HotspotConfiguration</key>
-    <true/>
-
-
+	<string>To capture profile photo please grant camera access</string>
+	<key>com.apple.developer.networking.wifi-info</key>
+	<true/>
+	<key>com.apple.developer.networking.HotspotConfiguration</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

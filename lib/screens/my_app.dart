@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:phillips_rear_vu/screens/scanner_page.dart';
 import 'package:phillips_rear_vu/screens/web_view_check.dart';
 import 'package:phillips_rear_vu/utils/app_background.dart';
 import 'package:phillips_rear_vu/utils/app_color.dart';
-import 'package:webview_flutter/webview_flutter.dart' as webby;
 import 'package:app_settings/app_settings.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:network_info_plus/network_info_plus.dart';
@@ -48,12 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: AppColor.midBlue,
       key: _scaffoldKey,
-      // appBar: AppBar(
-      //   backgroundColor: AppColor.darkBlue,
-      //   title: Text(widget.title,style: TextStyle(
-      //     fontSize: 32
-      //   ),),
-      // ),
+
       body: Stack(
         children: [
           const AppBackground(),
@@ -63,7 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Text(
                   widget.title,
-                  style: TextStyle(fontSize: 32, color: AppColor.midBlueLight),
+                  style: GoogleFonts.lobsterTwo(
+
+                    fontStyle: FontStyle.normal,
+                    color: AppColor.lightBlue,
+                    fontSize: wi*0.1
+                  ),
                 ),
                 SizedBox(
                   height: he * 0.05,
@@ -72,7 +70,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(
                   height: he * 0.2,
                 ),
-                Image.asset("assets/images/splash_screen_camera.png",scale: 1.3),
+                Container(
+                  width: wi*0.32,
+                  height: wi*0.32,
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 2,
+                        color: Colors.white,
+                      ),
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(25)
+                  ),
+                  child: Image.asset("assets/images/splash_screen_camera.png",scale: wi*0.001,),
+                )
                 // SizedBox(
                 //   height: he * 0.03,
                 // ),
@@ -96,13 +105,14 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () => {
           setState(() {
             // getCameraPermission();
-            // if(canShowQRScanner){
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const ScannerPage(),
-              ),
-            );
-          }),
+           // if (canShowQRScanner) {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ScannerPage(),
+                ),
+              );
+            }
+           ),
         },
         shape: StadiumBorder(side: BorderSide(color: AppColor.grey, width: 2)),
         child: const Icon(

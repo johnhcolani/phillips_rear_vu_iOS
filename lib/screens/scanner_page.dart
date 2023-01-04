@@ -4,10 +4,10 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-
 import 'my_app.dart';
 
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 class ScannerPage extends StatefulWidget {
   const ScannerPage({Key? key}) : super(key: key);
 
@@ -26,15 +26,20 @@ class _ScannerPageState extends State<ScannerPage> {
     super.reassemble();
     if (Platform.isAndroid) {
       controller!.pauseCamera();
+    } else if (Platform.isIOS) {
+      controller!.resumeCamera();
     }
-    controller!.resumeCamera();
-  }
+  
+  setState(() {
+
+
+  });}
 
   @override
   Widget build(BuildContext context) {
     double he = MediaQuery.of(context).size.height;
     double wi = MediaQuery.of(context).size.width;
-    bool check = true;
+
     return Scaffold(
 
         appBar: AppBar(
@@ -56,7 +61,7 @@ class _ScannerPageState extends State<ScannerPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
                         if (result != null)
@@ -116,7 +121,7 @@ class _ScannerPageState extends State<ScannerPage> {
                                   ),
                                 ),
                               ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20.0,
                             ),
 
@@ -124,10 +129,6 @@ class _ScannerPageState extends State<ScannerPage> {
                               child: FloatingActionButton.small(
 
                                 backgroundColor: AppColor.grey,
-                                child: Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Image.asset("assets/images/flash_light.png"),
-                                ),
                                 shape: StadiumBorder(side: BorderSide(color: AppColor.whiteBlue, width: 1)),
                                 onPressed: () async {
                                   await controller?.toggleFlash();
@@ -136,6 +137,10 @@ class _ScannerPageState extends State<ScannerPage> {
 
                                   });
                                 },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Image.asset("assets/images/flash_light.png"),
+                                ),
                               ),
 
                             ),
