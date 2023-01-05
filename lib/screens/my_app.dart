@@ -56,11 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Text(
                   widget.title,
-                  style: GoogleFonts.lobsterTwo(
+                  style: TextStyle(
+                    fontFamily: 'Lobster_Two',
 
-                    fontStyle: FontStyle.normal,
+                    fontStyle: FontStyle.italic,
                     color: AppColor.lightBlue,
-                    fontSize: wi*0.1
+                    fontSize: wi*0.11
                   ),
                 ),
                 SizedBox(
