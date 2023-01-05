@@ -23,6 +23,7 @@ class WebviewCheck extends StatelessWidget {
 
       widgets = Scaffold(
           appBar: AppBar(
+            backgroundColor: AppColor.darkBlue,
             title: Text(newUrl.toString()),
           ),
           body: Center(

@@ -66,13 +66,16 @@ class _ScannerPageState extends State<ScannerPage> {
                           height: 16,
                         ),
                         if (result != null)
-                          Text("Code detected",
+                          Text("😀 Code detected 😀",
                               style: TextStyle(color: AppColor.whiteBlue))
                         else
                           Text(
                             'Scan the QR code on the device.',
                             style: TextStyle(color: AppColor.whiteBlue),
                           ),
+                        SizedBox(
+                          height: he*0.02,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           // crossAxisAlignment: CrossAxisAlignment.center,
