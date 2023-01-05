@@ -23,6 +23,7 @@ Scan QR code for ssid, password and url.
 # link to QR code generator:
 # After that needs to add json text to QR code generator
 
+
 - https://www.the-qrcode-generator.com/
 
 # Sample text for json
@@ -33,6 +34,10 @@ Scan QR code for ssid, password and url.
 "password": "Password of network",
 "url": "http://192.168.4.1:81/stream"
 }
+
+
+![Screenshot 2023-01-05 at 12 34 26 PM](https://user-images.githubusercontent.com/91166301/210844558-ff0262fc-6ff5-4651-9f15-dfc761662fa6.png)
+
 
 # Link to Arduino setup tutorial
 - https://randomnerdtutorials.com/esp32-cam-video-streaming-face-recognition-arduino-ide/
