@@ -16,6 +16,7 @@ class ScannerPage extends StatefulWidget {
 }
 class _ScannerPageState extends State<ScannerPage> {
   Barcode? result;
+  bool isFlashOn = false;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
@@ -128,19 +129,24 @@ class _ScannerPageState extends State<ScannerPage> {
                             Center(
                               child: FloatingActionButton.small(
 
-                                backgroundColor: AppColor.grey,
+                                backgroundColor: isFlashOn ? AppColor.whiteBlue :AppColor.darkGrey,
                                 shape: StadiumBorder(side: BorderSide(color: AppColor.whiteBlue, width: 1)),
                                 onPressed: () async {
                                   await controller?.toggleFlash();
                                   setState(() {
-
+isFlashOn = !isFlashOn;
 
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Image.asset("assets/images/flash_light.png"),
-                                ),
+                                child: !isFlashOn
+                                    ? Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image.asset("assets/images/flash_light.png"),
+                                    )
+                                    : Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Image.asset("assets/images/flash_light_on.png"),
+                                    )
                               ),
 
                             ),

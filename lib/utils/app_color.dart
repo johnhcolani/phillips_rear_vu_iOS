@@ -8,6 +8,7 @@ abstract class AppColor{
   static Color get lightBlueTransparent=>const Color(0x33D6EFF6);
   static Color get whiteBlue=>const Color(0xFFD6EFF6);
   static Color get grey=>const Color(0xFF616B76);
+  static Color get darkGrey=>const Color(0xFF262728);
   static Color get buttonBlue=>const Color(0xFF415582);
 
 }
